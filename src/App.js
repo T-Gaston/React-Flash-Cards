@@ -15,12 +15,46 @@ class App extends React.Component {
     ]
   }
 
+  getId() {
+    return Math.floor(Math.random()*100000)
+  }
+
+  addCard = (card) => {
+    var newCard = {...card, id:this.getId()}
+    var newCards  = [newCard, ...this.state.flashCards]
+
+    this.setState({
+      flashCards:newCards
+    })
+  }
+
+
+  deleteCard = (id) => {
+    //remove contact from the state
+    console.log(id)
+    //uses id as a parameter so we know which contact to delete
+    // const {contacts } = this.state;          this is a shorthand way that reduces the "this.state.contact.filter"
+    // const newContacts = contacts.filter(contact => contact.id !== id)
+    const newCards = this.state.flashCards.filter( 
+      card => card.id !== id);
+
+      this.setState({
+        flashCards:newCards
+      })
+  }
+
   render(){
     return (
       <Container>
         <Header as='h1'>Flash Cards!</Header>
-        <CardForm />
-        <FlashCards flashCards={this.state.flashCards} />
+        <br />
+        <CardForm addCard={this.addCard}/>
+        <br />
+        <br />
+        <FlashCards 
+        flashCards={this.state.flashCards} 
+        deleteCallback={this.deleteCard}
+        />
       </Container>
     );
   }
