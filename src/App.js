@@ -12,8 +12,7 @@ class App extends React.Component {
       {id:1, question:'What is 2+2?', answer:'4' /* isTrue:False? */ },
       {id:2, question:'What is 5x5?', answer:'25'},
       {id:3, question:'What is 20/4?', answer:'5'}
-    ],
-    showAnswer:true
+    ]
   }
 
   getId() {
@@ -29,11 +28,11 @@ class App extends React.Component {
     })
   }
 
-  toggleAnswer = () => {
-    this.setState({
-      showAnswer: !this.state.showAnswer
-    })
-  }
+  // toggleAnswer = () => {
+  //   this.setState({
+  //     showAnswer: !this.state.showAnswer
+  //   })
+  // }
 
   deleteCard = (id) => {
     console.log(id)
