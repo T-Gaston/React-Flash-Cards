@@ -9,9 +9,9 @@ class App extends React.Component {
 
   state = {
     flashCards: [
-      {id:1, question:'What is 2+2?', answer:'4' /* isTrue:False? */ },
-      {id:2, question:'What is 5x5?', answer:'25'},
-      {id:3, question:'What is 20/4?', answer:'5'}
+      {id:1, question:'What is 2+2?', answer:'4', /*isHidden:False*/ },
+      {id:2, question:'What is 5x5?', answer:'25', /*isHidden:False*/},
+      {id:3, question:'What is 20/4?', answer:'5', /*isHidden:False*/}
     ]
   }
 
@@ -28,10 +28,10 @@ class App extends React.Component {
     })
   }
 
-  // toggleAnswer = () => {
+  // toggleAnswer = () => {                     //what even lol
   //   this.setState({
-  //     showAnswer: !this.state.showAnswer
-  //   })
+  //     isHidden: !this.state.isHidden
+  //   });
   // }
 
   deleteCard = (id) => {
@@ -46,7 +46,7 @@ class App extends React.Component {
   }
 
   render(){
-    const {showAnswer} = this.state
+    const {answer} = this.props;
     return (
       <Container>
         <Header as='h1'>Flash Cards!</Header>
@@ -56,7 +56,9 @@ class App extends React.Component {
         <br />
         <br />
         <FlashCards 
-        flashCards={this.state.flashCards} 
+        flashCards={this.state.flashCards}
+        // toggleCallback={this.toggleAnswer}  //good grief how the hell do you do this
+        // {...isHidden && <Show>{answer}</Show>} 
         deleteCallback={this.deleteCard}
         />
       </Container>
