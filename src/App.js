@@ -12,7 +12,8 @@ class App extends React.Component {
       {id:1, question:'What is 2+2?', answer:'4' /* isTrue:False? */ },
       {id:2, question:'What is 5x5?', answer:'25'},
       {id:3, question:'What is 20/4?', answer:'5'}
-    ]
+    ],
+    showAnswer:true
   }
 
   getId() {
@@ -28,13 +29,15 @@ class App extends React.Component {
     })
   }
 
+  toggleAnswer = () => {
+    this.setState({
+      showAnswer: !this.state.showAnswer
+    })
+  }
 
   deleteCard = (id) => {
-    //remove contact from the state
     console.log(id)
-    //uses id as a parameter so we know which contact to delete
-    // const {contacts } = this.state;          this is a shorthand way that reduces the "this.state.contact.filter"
-    // const newContacts = contacts.filter(contact => contact.id !== id)
+
     const newCards = this.state.flashCards.filter( 
       card => card.id !== id);
 
@@ -44,11 +47,13 @@ class App extends React.Component {
   }
 
   render(){
+    const {showAnswer} = this.state
     return (
       <Container>
         <Header as='h1'>Flash Cards!</Header>
         <br />
-        <CardForm addCard={this.addCard}/>
+        <CardForm addCard={this.addCard}
+        />
         <br />
         <br />
         <FlashCards 

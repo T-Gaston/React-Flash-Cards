@@ -5,11 +5,11 @@ import {Table, Button} from 'semantic-ui-react';
 const ThisCard = ({question, answer, id, foo}) => {
   return (
     <Table.Row>
-    <Table.Cell>{question}</Table.Cell>
-    <Table.Cell>{answer}</Table.Cell>
-    <Table.Cell>
-      <Button color='blue' onClick={() => foo(id)} >Delete</Button>
-    </Table.Cell>
+      <Table.Cell>{question}</Table.Cell>
+      <Table.Cell>{answer}</Table.Cell>
+      <Table.Cell>
+        <Button color='red' onClick={() => foo(id)} >Delete</Button>
+      </Table.Cell>
   </Table.Row>
   )
 };
